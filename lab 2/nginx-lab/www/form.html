@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация студента</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e6f2ff;
+            padding: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px #ccc;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .radio-group {
+            margin: 10px 0;
+        }
+        .radio-option {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f8ff;
+            border-radius: 5px;
+            border: 1px solid #0066cc;
+        }
+        /* Исправление для чекбокса */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Регистрация студента</h1>
+        
+        <form id="studentForm">
+            <!-- Имя -->
+            <div class="input-group">
+                <label>ФИО студента:</label>
+                <input type="text" name="name" placeholder="Введите ФИО" required>
+            </div>
+            
+            <!-- Возраст -->
+            <div class="input-group">
+                <label>Возраст:</label>
+                <input type="number" name="age" min="16" max="35" placeholder="18" required>
+            </div>
+            
+            <!-- Факультет -->
+            <div class="input-group">
+                <label>Факультет:</label>
+                <select name="faculty" required>
+                    <option value="">Выберите факультет</option>
+                    <option value="it">Информационные технологии</option>
+                    <option value="engineering">Инженерный</option>
+                    <option value="economics">Экономический</option>
+                </select>
+            </div>
+            
+            <!-- Форма обучения -->
+            <div class="input-group">
+                <label>Форма обучения:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" name="education" value="full" required>
+                        <label>Очная</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="education" value="part">
+                        <label>Заочная</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Чекбокс (исправленный) -->
+            <div class="checkbox-group">
+                <input type="checkbox" name="agree" required>
+                <label>Согласен с правилами</label>
+            </div>
+            
+            <!-- Кнопка -->
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        
+        <!-- Блок для результата -->
+        <div id="result"></div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        const form = document.getElementById('studentForm');
+        const resultDiv = document.getElementById('result');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Не перезагружать страницу
+            
+            // Получаем данные
+            const name = this.name.value;
+            const age = this.age.value;
+            const faculty = this.faculty.value;
+            const education = document.querySelector('input[name="education"]:checked')?.value;
+            
+            // Показываем alert
+            alert(`Студент: ${name}\nВозраст: ${age}\nФакультет: ${faculty}\nФорма: ${education === 'full' ? 'Очная' : 'Заочная'}`);
+            
+            // Показываем на странице
+            resultDiv.innerHTML = `
+                <h3>Данные отправлены!</h3>
+                <p><strong>ФИО:</strong> ${name}</p>
+                <p><strong>Возраст:</strong> ${age} лет</p>
+                <p><strong>Факультет:</strong> ${faculty}</p>
+                <p><strong>Форма обучения:</strong> ${education === 'full' ? 'Очная' : 'Заочная'}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
