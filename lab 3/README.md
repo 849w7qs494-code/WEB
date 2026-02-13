@@ -18,7 +18,9 @@
 ### Результат доступен по адресу:  
 
 Главная страница: http://localhost:8080/index.php
+
 Форма регистрации: http://localhost:8080/form.html
+
 Все сохранённые данные: http://localhost:8080/view.php
 
 ---
