@@ -49,8 +49,6 @@ docker-compose up -d --build
 
 ```www/index.php``` - главная страница
 
-```www/view.php``` - просмотр всех записей
-
 ```www/data.txt``` - файл с данными
 
 ```screenshots/``` — все скриншоты
