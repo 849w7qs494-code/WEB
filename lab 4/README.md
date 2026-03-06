@@ -29,9 +29,10 @@
 ## ⚙️ Как запустить проект
 
 1. Клонировать репозиторий:
-   ```bash
-   git clone https://github.com/849w7qs494-code/WEB.git
-   cd "WEB/lab 4"
+```bash
+git clone https://github.com/849w7qs494-code/WEB.git
+cd "WEB/lab 4"
+```
 2. Запустить контейнеры:
 ```bash
 docker-compose up -d --build
@@ -53,5 +54,7 @@ docker-compose up -d --build
 ```www/ApiClient.php``` - класс для работы с API hh.ru
 
 ```www/UserInfo.php``` - класс для информации о пользователе
+
+```www/get_countries.php``` - прокси для API
 
 ```screenshots/``` — все скриншоты
