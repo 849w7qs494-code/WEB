@@ -23,7 +23,7 @@
 
 **Список студентов:** http://localhost:8080/index.php
 
-**Adminer (управление БД):** http://localhost:8081
+**Adminer:** http://localhost:8081
 
 ---
 
