@@ -18,7 +18,7 @@
 1. Клонировать репозиторий:
 ```bash
 git clone https://github.com/849w7qs494-code/WEB.git
-cd "WEB/lab 5"
+cd "WEB/lab 6"
 ```
 2. Запустить контейнеры:
 ```bash
