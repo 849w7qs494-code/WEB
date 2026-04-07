@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: lab7_zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: lab7_kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+    depends_on:
+      - zookeeper
+
+  php:
+    image: php:8.2-fpm  # Используем готовый образ без Composer
+    container_name: lab7_php
+    volumes:
+      - ./www:/var/www/html
+    depends_on:
+      - kafka
+
+  nginx:
+    image: nginx:alpine
+    container_name: lab7_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
