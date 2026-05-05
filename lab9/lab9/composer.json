@@ -1,0 +1,16 @@
+{
+    "name": "student-registration/app",
+    "description": "PHP приложение регистрации студентов",
+    "type": "project",
+    "autoload": {
+        "classmap": [
+            "code/"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}

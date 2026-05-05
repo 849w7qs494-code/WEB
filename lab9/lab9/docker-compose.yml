@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    volumes:
+      - ./code:/var/www/html
+      - ./tests:/var/www/html/tests
+    environment:
+      - APP_ENV=testing
+    ports:
+      - "9000:9000"
