@@ -1,5 +1,0 @@
-{
-    "require": {
-        "arnaud-lb/php-rdkafka": "^6.0"
-    }
-}
