@@ -1,22 +1,12 @@
-version: "3.9"
+version: '3.8'
 
 services:
   php:
-    image: php:8.2-fpm
-    container_name: lab2_php
+    build: .
     volumes:
-      - ./www:/var/www/html
-    expose:
-      - "9000"
-
-  nginx:
-    image: nginx:1.27-alpine
-    container_name: lab2_nginx
+      - ./code:/var/www/html
+      - ./tests:/var/www/html/tests
+    environment:
+      - APP_ENV=testing
     ports:
-      - "8080:80"
-    volumes:
-      - ./www:/var/www/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - php
-    restart: unless-stopped
+      - "9000:9000"
