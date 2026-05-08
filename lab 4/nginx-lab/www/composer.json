@@ -1,0 +1,15 @@
+{
+    "name": "alekoshkina/lab4",
+    "description": "Lab 4 with API",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "*"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "guzzlehttp/guzzle": true
+        }
+    },
+    "minimum-stability": "stable"
+}

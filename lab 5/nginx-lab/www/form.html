@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация студента в БД</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+        .form-group { margin-bottom: 20px; }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            padding: 10px 0;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .radio-option input[type="radio"] {
+            width: auto;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        }
+        .required::after { content: " *"; color: #f44336; }
+        small { display: block; color: #888; font-size: 12px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Регистрация студента</h1>
+        
+        <div class="info-box">
+            <strong> Вариант 1:</strong> Данные сохраняются в MySQL (таблица students)
+        </div>
+        
+        <form action="process.php" method="POST">
+            <!-- Имя -->
+            <div class="form-group">
+                <label class="required">ФИО студента</label>
+                <input type="text" name="fullname" placeholder="Иванов Иван Иванович" required>
+            </div>
+            
+            <!-- Возраст -->
+            <div class="form-group">
+                <label class="required">Возраст</label>
+                <input type="number" name="age" min="16" max="35" required>
+                <small>от 16 до 35 лет</small>
+            </div>
+            
+            <!-- Факультет -->
+            <div class="form-group">
+                <label class="required">Факультет</label>
+                <select name="faculty" required>
+                    <option value="">-- Выберите факультет --</option>
+                    <option value="Информационные технологии">Информационные технологии</option>
+                    <option value="Инженерный">Инженерный</option>
+                    <option value="Экономический">Экономический</option>
+                    <option value="Медицинский">Медицинский</option>
+                    <option value="Юридический">Юридический</option>
+                </select>
+            </div>
+            
+            <!-- Форма обучения (радио) -->
+            <div class="form-group">
+                <label class="required">Форма обучения</label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="education" value="Очная" required>
+                        <span> Очная</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="study_form" value="Заочная">
+                        <span> Заочная</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="study_form" value="Вечерняя">
+                        <span> Вечерняя</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Чекбокс согласия -->
+            <div class="checkbox-group">
+                <input type="checkbox" name="agree" id="agree" value="1" required>
+                <label for="agree"> Я согласен с правилами обработки данных</label>
+            </div>
+            
+            <!-- Кнопка -->
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="index.php" style="color: #667eea;">📋 Посмотреть список студентов</a>
+        </p>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
